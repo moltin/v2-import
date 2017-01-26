@@ -112,7 +112,7 @@
   ##################
 
   // Files
-  /*clear();
+  clear();
   echo $color->parseString("Deleting {cyan:files}...\n");
   $files = $moltin->get('files');
   if ( count($files['data']) > 0 ) {
@@ -124,7 +124,7 @@
       echo "\033[" . strlen($entry['file_name']) . "D";
       echo $color->parseString('{' . ( ! isset($response['errors']) ? 'green' : 'red' ) . ':' . $entry['file_name'] . "}\n");
     }
-  }*/
+  }
 
   // Brands
   clear();
