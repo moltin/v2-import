@@ -76,6 +76,9 @@
     break;
   }
 
+  // Set region
+  $region = preg_replace('/amazon(.+?)-.+?.json/', '$1', $file);
+
   // File
   $data = json_decode(file_get_contents($dataDir . $file), true);
 
@@ -107,6 +110,54 @@
     exit($color->parseString("Authentication failed, please try again.\n"));
   }
 
+  ######################
+  ## DEFAULT CURRENCY ##
+  ######################
+
+  // Get all currencies
+  $currencies = $moltin->get('currencies');
+  $currency   = $config['currencies'][$region];
+
+  // No currency set
+  if ( count($currencies['data']) <= 0 ) {
+    $moltin->post('currencies', $currency);
+
+  // Set default if required
+  } else if ( count($currencies['data']) > 0 ) {
+
+    // Variables
+    $found   = false;
+    $default = false;
+
+    // Loop and check default matches
+    foreach ( $currencies['data'] as $item ) {
+      
+      // Currency exists
+      if ( $item['code'] == $currency['code'] ) {
+        $found = $item['id'];
+      }
+
+      // Currency not default
+      if ( $item['default'] == 1 && $item['code'] === $currency['code'] ) {
+        $default = true;
+      }
+    }
+
+    // Create the currency
+    if ( $found === false ) {
+      $result = $moltin->post('currencies', $currency);
+      $found  = $result['data']['id'];
+    }
+
+    // Set default
+    if ( $found !== false && $default === false ) {
+      /*TODO - Set default:
+      $moltin->put('currencies/' . $found, [
+        'default' => 1
+      ]);*/
+    }
+  }
+
   ##################
   ## CLEAR IT OUT ##
   ##################
@@ -115,7 +166,7 @@
   clear();
   echo $color->parseString("Deleting {cyan:files}...\n");
   $files = $moltin->get('files');
-  if ( count($files['data']) > 0 ) {
+  if ( ! isset($files['errors']) && count($files['data']) > 0 ) {
     foreach ( $files['data'] as $entry ) {
       
       echo $color->parseString("  Deleting {cyan:{$entry['file_name']}}");
@@ -130,7 +181,7 @@
   clear();
   echo $color->parseString("Deleting {cyan:brands}...\n");
   $brands = $moltin->get('brands');
-  if ( $brands['meta']['counts']['matching_resource_count'] > 0 ) {
+  if ( ! isset($brands['errors']) && $brands['meta']['counts']['matching_resource_count'] > 0 ) {
     foreach ( $brands['data'] as $entry ) {
       
       echo $color->parseString("  Deleting {cyan:{$entry['name']}}");
@@ -145,7 +196,7 @@
   clear();
   echo $color->parseString("Deleting {cyan:categories}...\n");
   $categories = $moltin->get('categories');
-  if ( $categories['meta']['counts']['matching_resource_count'] > 0 ) {
+  if ( ! isset($categories['errors']) && $categories['meta']['counts']['matching_resource_count'] > 0 ) {
     foreach ( $categories['data'] as $entry ) {
       
       echo $color->parseString("  Deleting {green:{$entry['name']}}");
@@ -160,7 +211,7 @@
   clear();
   echo $color->parseString("Deleting {cyan:products}...\n");
   $products = $moltin->get('products');
-  if ( $products['meta']['counts']['matching_resource_count'] > 0 ) {
+  if ( ! isset($products['errors']) && $products['meta']['counts']['matching_resource_count'] > 0 ) {
     foreach ( $products['data'] as $entry ) {
       
       echo $color->parseString("  Deleting {green:{$entry['name']}}");
