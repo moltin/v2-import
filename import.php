@@ -453,4 +453,4 @@
 
   // DEBUG
   $time = (microtime(true) - $start);
-  echo $color->parseString("Completed in {green:{$time}\n");
+  echo $color->parseString("Completed in {green:{$time}}\n");
