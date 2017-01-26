@@ -1,0 +1,39 @@
+{
+    "regionDefault":   "uk",
+    "categoryDefault": "electronics",
+    "countDefault":    "100",
+    "region": {
+        "uk": ".co.uk",
+        "us": ".com"
+    },
+    "category": {
+        "baby":                "Baby",
+        "beauty":              "Beauty",
+        "books":               "Books",
+        "clothing":            "Clothing",
+        "computers":           "Computers",
+        "diy":                 "DIY &amp; Tools",
+        "dvd":                 "DVD &amp; Blu-ray",
+        "electronics":         "Electronics",
+        "grocery":             "Grocery",
+        "home-garden":         "Home &amp; Garden",
+        "drugstore":           "Health &amp; Personal Care",
+        "kids":                "Toys &amp; Games",
+        "jewelry":             "Jewellery",
+        "kitchen":             "Kitchen &amp; Home",
+        "appliances":          "Large Appliances",
+        "lighting":            "Lighting",
+        "luggage":             "Luggage",
+        "music":               "Music",
+        "dmusic":              "Digital Music",
+        "musical-instruments": "Musical Instruments",
+        "officeproduct":       "Office Products",
+        "outdoors":            "Garden &amp; Outdoors",
+        "pet-supplies":        "Pet Supplies",
+        "shoes":               "Shoes &amp; Bags",
+        "software":            "Software",
+        "sports":              "Sports &amp; Outdoors",
+        "videogames":          "PC &amp; Video Games",
+        "watch":               "Watches"
+    } 
+}
