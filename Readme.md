@@ -15,6 +15,8 @@ We have included a few pre build data sets which are pulled from Amazon's bestse
 * PHP working in terminal/cmd
 * A moltin v2 store and your public/private keys to hand
 
+> If you're on Windows using cmd, it is highly recommended to install [Ansicon](https://github.com/adoxa/ansicon), without it you will experience odd output and no colours.
+
 ## Installation
 Simply clone down the repo and that's it, we include a basic SDK and other script requirements in the package.
 
