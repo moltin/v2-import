@@ -1,3 +1,5 @@
+<div style="text-align:center"><img src ="https://raw.githubusercontent.com/moltin/v2-import/master/preview.png" style="max-width: 80%" /></div>
+
 # Moltin v2 Import
 
 * [Website](https://moltin.com)
