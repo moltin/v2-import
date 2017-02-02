@@ -1,10 +1,10 @@
-<div style="text-align:center"><img src ="https://raw.githubusercontent.com/moltin/v2-import/master/preview.png" style="max-width: 80%" /></div>
-
 # Moltin v2 Import
 
 * [Website](https://moltin.com)
 * [License](https://github.com/moltin/v2-import/master/LICENSE)
 * Status: In Development
+
+<img src ="https://raw.githubusercontent.com/moltin/v2-import/master/preview.png" />
 
 The moltin v2 import is a set of tools to generate example store data and import it into a new moltin v2 store. It's something we quickly put together for testing and building before you have real data.
 
